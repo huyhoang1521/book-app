@@ -1,4 +1,5 @@
 import { Book } from './book';
+import { Page } from './page';
 
 export interface CustomResponse {
   timeStamp: Date;
@@ -7,5 +8,9 @@ export interface CustomResponse {
   reason: string;
   message: string;
   developerMessage: string;
-  data: { books?: Book[]; book?: Book };
+  data: {
+    books?: Book[];
+    book?: Book;
+  };
+  page?: Page;
 }

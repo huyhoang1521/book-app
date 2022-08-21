@@ -12,11 +12,12 @@ export class BookService {
   private readonly apiUrl = 'http://localhost:8080';
   constructor(private http: HttpClient) {}
 
-  books$ = <Observable<CustomResponse>>(
-    this.http
-      .get<CustomResponse>(`${this.apiUrl}/book/list`)
-      .pipe(tap(console.log), catchError(this.handleError))
-  );
+  books$ = (page: number) =>
+    <Observable<CustomResponse>>(
+      this.http
+        .get<CustomResponse>(`${this.apiUrl}/book/list?page=${page}`)
+        .pipe(tap(console.log), catchError(this.handleError))
+    );
 
   save$ = (book: Book) =>
     <Observable<CustomResponse>>(
